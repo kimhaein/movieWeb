@@ -52,8 +52,18 @@ class Movie {
         .then(function (res) { return res.json() }) // return 값을 다음 then으로 넘겨줌
         .then(function (res) {
             // window.href
-            console.log(res)
+            $('#header').find('h1').html(res.title)
+            $('.movie_info_wrap').find('.tubmnaill').css('background-image','url(https://image.tmdb.org/t/p/w500/'+res.poster_path+')')
+            
+            let genres ='';
+            res.genres.map(function(value){
+                genres += `<li>${value.name}</li>`
+            })
+            $('.genre').html(genres)
+            $('.story').text(res.overview)
 
+            $('.graph_wrap').find('.graph').css('width',(res.vote_average)*10+'%')
+            $('.score').text((res.vote_average)*10)
 
         })
         .then(function(res){
