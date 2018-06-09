@@ -46,7 +46,7 @@ class Movie {
     }
     //sub data
     movieData() {
-        console.log(window.location.href)
+        const that = this;
         const movieId = window.location.href.split('?')[1]
         fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.state.apiKey}&language=${this.state.language}`)
         .then(function (res) { return res.json() }) // return 값을 다음 then으로 넘겨줌
@@ -64,10 +64,28 @@ class Movie {
 
             $('.graph_wrap').find('.graph').css('width',(res.vote_average)*10+'%')
             $('.score').text((res.vote_average)*10)
+            console.log(res)
+
+            return fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${that.state.apiKey}`) 
 
         })
-        .then(function(res){
-            console.log(res)
+        .then(function(res){ return res.json() })
+        .then(function (res) {
+            const cast = res.cast
+            let html =''
+            cast.map(function(value,index){
+                if(index<4){
+                    html+= `<li>
+                                <div class="cast_img" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.profile_path})"></div>
+                                <div>
+                                    <p class="cast_name">${value.name}</p>
+                                    <p class="character">${value.character}</p>
+                                </div>
+                            </li>`
+                }
+            })
+            $('.cast_wrap').html(html)
+            console.log(cast)
         })
         .catch(function (err) { // 에러처리
             console.error(err)
