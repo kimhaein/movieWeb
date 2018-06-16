@@ -13,7 +13,9 @@ class MovieDetail {
        this.getSimilarData()
     }
     photoSlider() {
-        $('.photo_slider').slick({});
+        $('.photo_slider').slick({
+            arrows: true,
+        });
     }
     //sub data
     getMovieData() {
