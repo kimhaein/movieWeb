@@ -16,7 +16,7 @@ class Movie {
         this.getPopularData() 
     }
     rankSlider() {
-        $('.rank_slider').slick({
+        $('.rank_slider').not('.slick-initialized').slick({
             centerMode: true,
             centerPadding: '40px',
             slidesToShow: 1,
