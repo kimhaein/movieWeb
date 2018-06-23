@@ -71,7 +71,7 @@ header {
     background: #f2b2b0;
     color:#ffffff;
 }
-header .lang {
+/* header .lang {
     float:right;
 }
 header .lang span {
@@ -81,7 +81,7 @@ header .lang span {
 }
 header .lang img {
     width:100%;
-}
+} */
 header .back {
     float:left;
     margin-top: -1px;
@@ -130,13 +130,37 @@ header h1 {
 
 }
 #main_wrap .rank_slider .tubmnaill {
-    /* width:calc(100% - 20px); */
-    height: 430px;
+    height: 420px;
     margin:8% 10px;
     border-radius: 20px;
     background-image: url(../images/test.jpg);
     background-size: cover;
     background-position: center;
+}
+@media screen and (max-width:414px) {
+    #main_wrap .rank_slider .tubmnaill {
+        height: 470px;
+    }
+}
+@media screen and (max-width:375px) {
+    #main_wrap .rank_slider .tubmnaill {
+        height: 410px;
+    }
+}
+@media screen and (min-height:811px) {
+    #main_wrap .rank_slider .tubmnaill {
+        height: 550px;
+    }
+}
+@media screen and (max-width:360px) {
+    #main_wrap .rank_slider .tubmnaill {
+        height: 390px;
+    }
+}
+@media screen and (max-width:320px) {
+    #main_wrap .rank_slider .tubmnaill {
+        height: 320px;
+    }
 }
 #main_wrap .rank_slider .tubmnaill .dim {
     display:block;

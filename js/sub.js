@@ -1,24 +1,37 @@
 class MovieDetail {
-    // constructor () {
-    state = {
-        apiKey:'03244c916053ec8db051d6b477e36c1b',
-        language:'ko',
-        movieId: window.location.href.split('?')[1]
+    constructor () {
+        this.state = {
+            apiKey:'03244c916053ec8db051d6b477e36c1b',
+            language:'ko',
+            movieId:''
+        }
     }
-    // }
-    init = () => {
+    init() {
+       this.getQuery()
        this.getMovieData()  
        this.getCastData()  
        this.getImgData()  
        this.getSimilarData()
     }
-    photoSlider = () => {
+    getQuery(){
+        const query = window.location.search.replace('?','').split("&");
+        const queryObj = {}
+        query.map((value) => {
+            const queryKey = value.split('=')[0]
+            const queryValue = value.split('=')[1]
+            queryObj[queryKey] = queryValue
+        })
+        
+        this.state.movieId = queryObj.movieId
+    }
+    photoSlider() {
         $('.photo_slider').not('.slick-initialized').slick({
             arrows: true,
         });
     }
     //sub data
-    getMovieData = () => {
+    getMovieData() {
+        // console.log(this.state.queryObj)
         fetch(`https://api.themoviedb.org/3/movie/${this.state.movieId}?api_key=${this.state.apiKey}&language=${this.state.language}`)
         .then(function (res) { return res.json() }) 
         .then(function (res) {
@@ -43,7 +56,7 @@ class MovieDetail {
         })
     }
 
-    getCastData = () => {
+    getCastData() {
         fetch(`https://api.themoviedb.org/3/movie/${this.state.movieId}/credits?api_key=${this.state.apiKey}`)   
         .then(function(res){ return res.json() })
         .then(function (res) {
@@ -67,7 +80,7 @@ class MovieDetail {
         })
     }
 
-    getImgData = () => {
+    getImgData() {
         fetch(`https://api.themoviedb.org/3/movie/${this.state.movieId}/images?api_key=${this.state.apiKey}`)  
         .then((res) =>{ return res.json() })
         .then((res) => {
@@ -85,17 +98,16 @@ class MovieDetail {
         }) 
     }
 
-    getSimilarData = () => {
+    getSimilarData() {
         fetch(`https://api.themoviedb.org/3/movie/${this.state.movieId}/similar?api_key=${this.state.apiKey}&language=${this.state.language}`)  
         .then(function(res){ return res.json() })
         .then(function (res) {
-            console.log(res)
             const similar = res.results
             let html =''
             similar.map(function(value,index){
                 if(index<4){
                     html+= `<div class="movie_list" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.backdrop_path})">
-                                <a href="./sub.html?${value.id}">
+                                <a href="./sub.html?movieId=${value.id}">
                                     <span class="dim">
                                         <p>${value.title}</p>
                                     </span>
