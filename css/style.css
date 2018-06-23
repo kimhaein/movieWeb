@@ -118,6 +118,9 @@ header h1 {
     background-image: url(../images/ic_back.png);
     background-size:cover;
 }
+.slider_list:focus {
+    outline: none;
+}
 
 /*--- main ---*/
 #main_wrap {
@@ -192,10 +195,6 @@ header h1 {
     font-size: 18px;
     line-height:40px;
     text-align: center;
-}
-#main_wrap .rank_slider .more_btn a {
-    display:block;
-    width:100%;
     color: #ffffff;
 }
 /*--- sub ---*/

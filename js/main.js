@@ -49,12 +49,14 @@ class Movie {
             let html = '';
             data.map((value,index) => {
                 html += `<div class="slider_list">
-                            <div class="tubmnaill" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.poster_path})";>
-                                <span class="dim"></span>
-                            </div>
-                            <h2 class="title">${index+1}위 ${value.title}</h2>
-                            <p class="date">${value.release_date.replace(/-/gi,".")} 개봉</p>
-                            <div class="more_btn"><a href="./sub.html?movieId=${value.id}">MORE</a></div>
+                            <a href="./sub.html?movieId=${value.id}">
+                                <div class="tubmnaill" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.poster_path})";>
+                                    <span class="dim"></span>
+                                </div>
+                                <h2 class="title">${index+1}위 ${value.title}</h2>
+                                <p class="date">${value.release_date.replace(/-/gi,".")} 개봉</p>
+                                <div class="more_btn">MORE</div>
+                            </a>
                         </div>`
             })
 
