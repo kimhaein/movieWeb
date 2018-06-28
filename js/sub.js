@@ -40,7 +40,7 @@ class MovieDetail {
             $('.movie_info_wrap').find('.tubmnaill').css('background-image','url(https://image.tmdb.org/t/p/w500/'+res.poster_path+')')
             
             let genres ='';
-            res.genres.map(function(value){
+            res.genres.map((value)=>{
                 genres += `<li>${value.name}</li>`
             })
 
@@ -62,7 +62,7 @@ class MovieDetail {
         .then((res) => {
             const cast = res.cast
             let html =''
-            cast.map(function(value,index){
+            cast.map((value,index) => {
                 if(index<4){
                     html+= `<li>
                                 <div class="cast_img" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.profile_path})"></div>
@@ -86,7 +86,7 @@ class MovieDetail {
         .then((res) => {
             const img = res.backdrops
             let html =''
-            img.map(function(value){
+            img.map((value) => {
                     html+= `<li style="background-image: url(https://image.tmdb.org/t/p/w500/${value.file_path})"></li>`
             })
 
@@ -104,7 +104,7 @@ class MovieDetail {
         .then((res) => {
             const similar = res.results
             let html =''
-            similar.map(function(value,index){
+            similar.map((value,index) => {
                 if(index<4){
                     html+= `<div class="movie_list" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.backdrop_path})">
                                 <a href="./sub.html?movieId=${value.id}">
