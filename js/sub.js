@@ -33,8 +33,8 @@ class MovieDetail {
     getMovieData() {
         // console.log(this.state.queryObj)
         fetch(`https://api.themoviedb.org/3/movie/${this.state.movieId}?api_key=${this.state.apiKey}&language=${this.state.language}`)
-        .then(function (res) { return res.json() }) 
-        .then(function (res) {
+        .then((res) => { return res.json() }) 
+        .then((res) => {
 
             $('#header').find('h1').html(res.title)
             $('.movie_info_wrap').find('.tubmnaill').css('background-image','url(https://image.tmdb.org/t/p/w500/'+res.poster_path+')')
@@ -51,15 +51,15 @@ class MovieDetail {
             $('.score').text((res.vote_average)*10)
 
         })
-        .catch(function (err) { // 에러처리
+        .catch((err) => { // 에러처리
             console.error(err)
-        })
+        }) 
     }
 
     getCastData() {
         fetch(`https://api.themoviedb.org/3/movie/${this.state.movieId}/credits?api_key=${this.state.apiKey}`)   
-        .then(function(res){ return res.json() })
-        .then(function (res) {
+        .then((res) => { return res.json() })
+        .then((res) => {
             const cast = res.cast
             let html =''
             cast.map(function(value,index){
@@ -75,14 +75,14 @@ class MovieDetail {
             })
             $('.cast_wrap').html(html)
         })
-        .catch(function (err) { // 에러처리
+        .catch((err) => { // 에러처리
             console.error(err)
-        })
+        }) 
     }
 
     getImgData() {
         fetch(`https://api.themoviedb.org/3/movie/${this.state.movieId}/images?api_key=${this.state.apiKey}`)  
-        .then((res) =>{ return res.json() })
+        .then((res) => { return res.json() })
         .then((res) => {
             const img = res.backdrops
             let html =''
@@ -93,15 +93,15 @@ class MovieDetail {
             $('.photo_slider').html(html)
             this.photoSlider()
         })
-        .catch(function (err) { // 에러처리
+        .catch((err) => { // 에러처리
             console.error(err)
         }) 
     }
 
     getSimilarData() {
         fetch(`https://api.themoviedb.org/3/movie/${this.state.movieId}/similar?api_key=${this.state.apiKey}&language=${this.state.language}`)  
-        .then(function(res){ return res.json() })
-        .then(function (res) {
+        .then((res) => { return res.json() })
+        .then((res) => {
             const similar = res.results
             let html =''
             similar.map(function(value,index){
@@ -118,7 +118,7 @@ class MovieDetail {
 
             $('.recommend_movie').html(html)
         })
-        .catch(function (err) { // 에러처리
+        .catch((err) => { // 에러처리
             console.error(err)
         }) 
     }

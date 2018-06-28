@@ -59,10 +59,7 @@ class Movie {
                             </a>
                         </div>`
             })
-
             $('.rank_slider').html(html)
-            
-
             //slick slider 실행
             this.rankSlider(slider)
 
