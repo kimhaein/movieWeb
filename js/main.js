@@ -47,7 +47,7 @@ class Movie {
             const data = res.results;
             //slider list
             let html = '';
-            data.map((value,index) => {
+            data.foreach((value,index) => {
                 html += `<div class="slider_list">
                             <a href="./sub.html?movieId=${value.id}">
                                 <div class="tubmnaill" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.poster_path})";>
