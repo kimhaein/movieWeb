@@ -1,10 +1,10 @@
 # movieWeb
-TMDB의 오픈api를 사용하여 영화 인기순위 및 영화 정보를 보여주는 웹
+TMDB의 오픈api를 사용하여 영화 인기순위 및 영화 정보를 보여주는 모바일 웹
 
-`ajax를 활용한 데이터 바인딩, ES6 문법 , 반응형 웹 연습용 프로젝트 입니다.`
+`ajax를 활용한 데이터 바인딩, ES6 문법 , 연습용 프로젝트 입니다.`
 
 # URL
-> https://kimhaein.github.io/movieWeb/
+> https://kimhaein.github.io/movieWeb/ : 모바일전용입니다.
 
 # 오픈 API 후보
 1. `영화진흥위원회 오픈API`<br/>
