@@ -2,15 +2,12 @@ class Movie {
     constructor () {
         this.state = {
             apiKey:'03244c916053ec8db051d6b477e36c1b',
-            language:'ko',
+            language:'en',
             slider : true
         }
     }
     init() { 
         this.getPopularData(this.state.slider)  
-        // $(document).on("click",".lang span",()=>{
-        //     this.changeLang()
-        // });
      }
      changeLang () {
         this.state.language = 'en'
@@ -47,7 +44,7 @@ class Movie {
             const data = res.results;
             //slider list
             let html = '';
-            data.foreach((value,index) => {
+            data.forEach((value,index) => {
                 html += `<div class="slider_list">
                             <a href="./sub.html?movieId=${value.id}">
                                 <div class="tubmnaill" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.poster_path})";>

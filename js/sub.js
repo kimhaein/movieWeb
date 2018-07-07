@@ -2,7 +2,7 @@ class MovieDetail {
     constructor () {
         this.state = {
             apiKey:'03244c916053ec8db051d6b477e36c1b',
-            language:'ko',
+            language:'en',
             movieId:''
         }
     }
@@ -16,7 +16,7 @@ class MovieDetail {
     getQuery(){
         const query = window.location.search.replace('?','').split("&");
         const queryObj = {}
-        query.foreach((value) => {
+        query.forEach((value) => {
             const queryKey = value.split('=')[0]
             const queryValue = value.split('=')[1]
             queryObj[queryKey] = queryValue
@@ -40,7 +40,7 @@ class MovieDetail {
             $('.movie_info_wrap').find('.tubmnaill').css('background-image','url(https://image.tmdb.org/t/p/w500/'+res.poster_path+')')
             
             let genres ='';
-            res.genres.foreach((value)=>{
+            res.genres.forEach((value)=>{
                 genres += `<li>${value.name}</li>`
             })
 
@@ -62,7 +62,7 @@ class MovieDetail {
         .then((res) => {
             const cast = res.cast
             let html =''
-            cast.foreach((value,index) => {
+            cast.forEach((value,index) => {
                 if(index<4){
                     html+= `<li>
                                 <div class="cast_img" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.profile_path})"></div>
@@ -86,7 +86,7 @@ class MovieDetail {
         .then((res) => {
             const img = res.backdrops
             let html =''
-            img.foreach((value) => {
+            img.forEach((value) => {
                     html+= `<li style="background-image: url(https://image.tmdb.org/t/p/w500/${value.file_path})"></li>`
             })
 
@@ -104,7 +104,7 @@ class MovieDetail {
         .then((res) => {
             const similar = res.results
             let html =''
-            similar.foreach((value,index) => {
+            similar.forEach((value,index) => {
                 if(index<4){
                     html+= `<div class="movie_list" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.backdrop_path})">
                                 <a href="./sub.html?movieId=${value.id}">

@@ -91,6 +91,7 @@ header .back img {
 }
 header h1 {
     float:left;
+    width: calc(100% - 40px);
     margin-left:20px;
     font-size: 20px;
     letter-spacing: 4px;
