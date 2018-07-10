@@ -55,6 +55,7 @@ input {
 li {list-style:none;}
 a {text-decoration:none;}
 img {border:0;}
-input:focus { outline: none; }
+:focus { outline: none; }
 
 /*--- custom ---*/
+button {border:none;background:none}

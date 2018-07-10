@@ -9,11 +9,6 @@ class Movie {
     init() { 
         this.getPopularData(this.state.slider)  
      }
-     changeLang () {
-        this.state.language = 'en'
-        this.state.slider = false
-        this.getPopularData(this.state.slider) 
-    }
     rankSlider() {
         $('.rank_slider').slick({
             centerMode: true,
@@ -38,20 +33,22 @@ class Movie {
     }
     //main data
     getPopularData(slider) {
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.state.apiKey}&language=${this.state.language}`)
+        const {apiKey,language} = this.state
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=${language}`)
         .then((res) => { return res.json() })
         .then((res) => {
             const data = res.results;
             //slider list
             let html = '';
             data.forEach((value,index) => {
+                const { id,poster_path,title,release_date } = value
                 html += `<div class="slider_list">
-                            <a href="./sub.html?movieId=${value.id}">
-                                <div class="tubmnaill" style="background-image: url(https://image.tmdb.org/t/p/w500/${value.poster_path})";>
+                            <a href="./sub.html?movieId=${id}&lang=ko">
+                                <div class="tubmnaill" style="background-image: url(https://image.tmdb.org/t/p/w500/${poster_path})";>
                                     <span class="dim"></span>
                                 </div>
-                                <h2 class="title">${index+1}위 ${value.title}</h2>
-                                <p class="date">${value.release_date.replace(/-/gi,".")} 개봉</p>
+                                <h2 class="title">${index+1}위 ${title}</h2>
+                                <p class="date">${release_date.replace(/-/gi,".")} 개봉</p>
                                 <div class="more_btn">MORE</div>
                             </a>
                         </div>`
